@@ -40,35 +40,35 @@ spec:
                 port: 
                   number: 80
 
----
+# ---
 
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: ingress-dominio
-spec:
-  ingressClassName: nginx
-  rules: 
-    - host: blue.192.168.100.10.nip.io
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service: 
-                name: service-webcolor-blue
-                port: 
-                  number: 80
-    - host: green.192.168.100.10.nip.io
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service: 
-                name: service-webcolor-green
-                port: 
-                  number: 80
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: ingress-dominio
+# spec:
+#   ingressClassName: nginx
+#   rules: 
+#     - host: blue.192.168.100.10.nip.io
+#       http:
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service: 
+#                 name: service-webcolor-blue
+#                 port: 
+#                   number: 80
+#     - host: green.192.168.100.10.nip.io
+#       http:
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service: 
+#                 name: service-webcolor-green
+#                 port: 
+#                   number: 80
 
 
 
