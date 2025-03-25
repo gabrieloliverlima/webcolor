@@ -2,9 +2,12 @@
 
 This repository provides a complete Kubernetes setup with **NGINX Ingress Controller**, **Cert-Manager**, and **Let's Encrypt** for securing services with HTTPS.
 
+📌 **Cluster Provisionado na Digital Ocean**
+Este cluster Kubernetes foi provisionado na **Digital Ocean**, garantindo escalabilidade e alta disponibilidade.
+
 ## 📌 Prerequisites
 Ensure you have the following installed:
-- **Kubernetes Cluster** (Minikube, Kind, or a cloud provider like AWS EKS, GKE, or AKS)
+- **Kubernetes Cluster** (Minikube, Kind, ou um provedor de nuvem como AWS EKS, GKE, AKS, ou **Digital Ocean Kubernetes**)
 - **Helm** (Package manager for Kubernetes)
 - **Kubectl** (Kubernetes CLI)
 
@@ -36,7 +39,7 @@ kubectl get svc -n ingress-nginx
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
-metadata:
+metadata: 
   name: web-color-green
 spec:
   replicas: 1
@@ -45,7 +48,7 @@ spec:
       app: web-color-green
   template:
     metadata:
-      labels:
+      labels: 
         app: web-color-green
     spec:
       containers:
@@ -58,7 +61,7 @@ spec:
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
-metadata:
+metadata: 
   name: web-color-blue
 spec:
   replicas: 1
@@ -67,7 +70,7 @@ spec:
       app: web-color-blue
   template:
     metadata:
-      labels:
+      labels: 
         app: web-color-blue
     spec:
       containers:
@@ -89,7 +92,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: service-webcolor-green
-spec:
+spec: 
   selector:
     app: web-color-green
   ports:
@@ -100,7 +103,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: service-webcolor-blue
-spec:
+spec: 
   selector:
     app: web-color-blue
   ports:
@@ -124,7 +127,7 @@ spec:
   defaultBackend:
     service:
       name: nginx
-      port:
+      port: 
         number: 80
 ```
 #### **Ingress rules for /blue and /green**
@@ -151,14 +154,14 @@ spec:
             backend:
               service:
                 name: service-webcolor-blue
-                port:
+                port: 
                   number: 80
           - path: /green
             pathType: Prefix
             backend:
               service:
                 name: service-webcolor-green
-                port:
+                port: 
                   number: 80
 ```
 Apply the Ingress rules:
@@ -227,6 +230,7 @@ With this setup, you have:
 ✅ **Cert-Manager for automatic SSL certificates**
 ✅ **Secure HTTPS with Let's Encrypt**
 ✅ **Multiple services exposed via Ingress**
+✅ **Cluster provisionado na Digital Ocean para alta disponibilidade**
 
 If you have any issues, feel free to open an issue in this repository! Happy coding! 🚀
 
