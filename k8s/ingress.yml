@@ -4,9 +4,9 @@ metadata:
   name: ingress-default
 spec:
   ingressClassName: nginx
-  defaultBackend: #Especifica o backend padrão para lidar com solicitações que não correspondem a nenhuma regra definida no Ingress.
-                  #Geralmente, o defaultBackend é usado para fornecer uma página de erro padrão ou um serviço genérico em caso de falta de correspondência com regras de roteamento.
-                  #Exemplo típico: Mostrar uma página de "404 - Página não encontrada".
+  defaultBackend: # Specifies the default backend to handle requests that do not match any defined rules in the Ingress.
+                  # Typically, the defaultBackend is used to provide a default error page or a generic service in case of no matching routing rules.
+                  # A typical example: Show a "404 - Page Not Found" page.
     service:
       name: nginx
       port: 
@@ -18,31 +18,29 @@ kind: Ingress
 metadata:
   name: ingress-webcolor
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: / #Esta anotação instrui o controlador NGINX a reescrever o caminho do URL para / antes de encaminhar a solicitação ao serviço backend. Isso é útil para que os serviços backend não precisem lidar com os caminhos completos.
+    nginx.ingress.kubernetes.io/rewrite-target: / # This annotation instructs the NGINX controller to rewrite the URL path to / before forwarding the request to the backend service. This is useful so that backend services do not need to handle full paths.
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
-  ingressClassName: nginx #Indica que o controlador NGINX gerenciará este Ingress.
+  ingressClassName: nginx # Indicates that the NGINX controller will manage this Ingress.
   tls:
     - hosts:
       - labdevops.online
       secretName: letsencrypt-prod
   rules:
-    - host: labdevops.online #add domínio
-      http: #Define as regras de roteamento baseadas em caminhos HTTP
-        paths: # Rota /blue: Solicitações feitas para <Ingress-IP>/blue são encaminhadas para o serviço service-webcolor-blue na porta 80.
-          - path: /blue #As solicitações com caminho que começam com /blue serão roteadas para o serviço especificado.
-            pathType: Prefix #Indica que o caminho deve corresponder a um prefixo no URL.
+    - host: labdevops.online # Add domain
+      http: # Defines HTTP-based routing rules
+        paths: # Route /blue: Requests made to <Ingress-IP>/blue are forwarded to the service service-webcolor-blue on port 80.
+          - path: /blue # Requests with paths starting with /blue will be routed to the specified service.
+            pathType: Prefix # Indicates that the path should match a prefix in the URL.
             backend:
               service:
-                name: service-webcolor-blue #O tráfego será encaminhado para o serviço chamado service-webcolor-blue
+                name: service-webcolor-blue # The traffic will be forwarded to the service named service-webcolor-blue
                 port: 
                   number: 80
-          - path: /green # Rota /green: Solicitações feitas para <Ingress-IP>/green são encaminhadas para o serviço service-webcolor-green na porta 80.
+          - path: /green # Route /green: Requests made to <Ingress-IP>/green are forwarded to the service service-webcolor-green on port 80.
             pathType: Prefix
             backend:
               service:
                 name: service-webcolor-green
                 port: 
                   number: 80
-
-
