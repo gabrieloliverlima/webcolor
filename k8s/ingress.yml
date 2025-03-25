@@ -1,22 +1,14 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-<<<<<<< HEAD
-  name: ingress-webcolor
-=======
   name: ingress-default
->>>>>>> 3fda972 (Initial commit)
 spec:
   ingressClassName: nginx
   defaultBackend: #Especifica o backend padrão para lidar com solicitações que não correspondem a nenhuma regra definida no Ingress.
                   #Geralmente, o defaultBackend é usado para fornecer uma página de erro padrão ou um serviço genérico em caso de falta de correspondência com regras de roteamento.
                   #Exemplo típico: Mostrar uma página de "404 - Página não encontrada".
     service:
-<<<<<<< HEAD
-      name: service-webcolor-blue
-=======
       name: nginx
->>>>>>> 3fda972 (Initial commit)
       port: 
         number: 80
 ---
@@ -27,13 +19,6 @@ metadata:
   name: ingress-webcolor
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: / #Esta anotação instrui o controlador NGINX a reescrever o caminho do URL para / antes de encaminhar a solicitação ao serviço backend. Isso é útil para que os serviços backend não precisem lidar com os caminhos completos.
-<<<<<<< HEAD
-spec:
-  ingressClassName: nginx #Indica que o controlador NGINX gerenciará este Ingress.
-  rules:
-    - host: color.192.168.100.10.nip.io #add domínio
-=======
-    #kubernetes.io/ingress.class: "nginx"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
   ingressClassName: nginx #Indica que o controlador NGINX gerenciará este Ingress.
@@ -43,7 +28,6 @@ spec:
       secretName: letsencrypt-prod
   rules:
     - host: labdevops.online #add domínio
->>>>>>> 3fda972 (Initial commit)
       http: #Define as regras de roteamento baseadas em caminhos HTTP
         paths: # Rota /blue: Solicitações feitas para <Ingress-IP>/blue são encaminhadas para o serviço service-webcolor-blue na porta 80.
           - path: /blue #As solicitações com caminho que começam com /blue serão roteadas para o serviço especificado.
@@ -61,55 +45,4 @@ spec:
                 port: 
                   number: 80
 
-<<<<<<< HEAD
-# ---
 
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: ingress-dominio
-# spec:
-#   ingressClassName: nginx
-#   rules: 
-#     - host: blue.192.168.100.10.nip.io
-#       http:
-#         paths:
-#           - path: /
-#             pathType: Prefix
-#             backend:
-#               service: 
-#                 name: service-webcolor-blue
-#                 port: 
-#                   number: 80
-#     - host: green.192.168.100.10.nip.io
-#       http:
-#         paths:
-#           - path: /
-#             pathType: Prefix
-#             backend:
-#               service: 
-#                 name: service-webcolor-green
-#                 port: 
-#                   number: 80
-
-
-
-# host: blue.127.0.0.1.nip.io
-
-# As solicitações cujo cabeçalho Host corresponde a blue.127.0.0.1.nip.io serão roteadas para o backend especificado.
-# O domínio nip.io é um serviço que resolve automaticamente para o IP embutido no domínio. Neste caso, 127.0.0.1 será resolvido para o endereço de loopback local.
-# path: /
-
-# Todas as requisições para esse host, independente do caminho (por exemplo, /, /api, etc.), serão roteadas para o serviço backend.
-# backend:
-
-# service.name: service-webcolor-blue: O tráfego será encaminhado para o serviço chamado service-webcolor-blue.
-# service.port.number: 80: Porta do serviço backend onde as requisições serão processadas.
-
-
-# Domínio blue.127.0.0.1.nip.io:
-# Todo o tráfego para esse domínio será roteado para o serviço service-webcolor-blue.
-# Domínio green.127.0.0.1.nip.io:
-# Todo o tráfego para esse domínio será roteado para o serviço service-webcolor-green.
-=======
->>>>>>> 3fda972 (Initial commit)

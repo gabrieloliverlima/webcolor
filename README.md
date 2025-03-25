@@ -192,7 +192,7 @@ metadata:
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
-    email: gabriel.o.lima1709@gmail.com
+    email: your email address
     privateKeySecretRef:
       name: letsencrypt-prod
     solvers:

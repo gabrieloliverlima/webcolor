@@ -3,11 +3,7 @@ kind: Deployment
 metadata: 
   name: web-color-green
 spec:
-<<<<<<< HEAD
   replicas: 2
-=======
-  replicas: 1
->>>>>>> 3fda972 (Initial commit)
   selector:
     matchLabels:
       app: web-color-green
@@ -51,11 +47,7 @@ kind: Deployment
 metadata: 
   name: web-color-blue
 spec:
-<<<<<<< HEAD
   replicas: 2
-=======
-  replicas: 1 
->>>>>>> 3fda972 (Initial commit)
   selector:
     matchLabels:
       app: web-color-blue
@@ -90,9 +82,6 @@ spec:
   ports:
     - name: http
       port: 80
-<<<<<<< HEAD
-      targetPort: 80
-=======
       targetPort: 80
 
 ---
@@ -130,4 +119,4 @@ spec:
   ports:
   - port: 80
     targetPort: 80
->>>>>>> 3fda972 (Initial commit)
+
