@@ -3,7 +3,11 @@ kind: Deployment
 metadata: 
   name: web-color-green
 spec:
+<<<<<<< HEAD
   replicas: 2
+=======
+  replicas: 1
+>>>>>>> 3fda972 (Initial commit)
   selector:
     matchLabels:
       app: web-color-green
@@ -47,7 +51,11 @@ kind: Deployment
 metadata: 
   name: web-color-blue
 spec:
+<<<<<<< HEAD
   replicas: 2
+=======
+  replicas: 1 
+>>>>>>> 3fda972 (Initial commit)
   selector:
     matchLabels:
       app: web-color-blue
@@ -82,4 +90,44 @@ spec:
   ports:
     - name: http
       port: 80
+<<<<<<< HEAD
       targetPort: 80
+=======
+      targetPort: 80
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        resources:
+          limits:
+            memory: "200Mi"
+            cpu: "200m"
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+spec:
+  selector:
+    app: nginx
+  ports:
+  - port: 80
+    targetPort: 80
+>>>>>>> 3fda972 (Initial commit)
