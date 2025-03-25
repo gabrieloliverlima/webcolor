@@ -2,12 +2,12 @@
 
 This repository provides a complete Kubernetes setup with **NGINX Ingress Controller**, **Cert-Manager**, and **Let's Encrypt** for securing services with HTTPS.
 
-📌 **Cluster Provisionado na Digital Ocean**
-Este cluster Kubernetes foi provisionado na **Digital Ocean**, garantindo escalabilidade e alta disponibilidade.
+📌 **Cluster Provisioned on Digital Ocean**
+This Kubernetes cluster was provisioned on **Digital Ocean**, ensuring scalability and high availability.
 
 ## 📌 Prerequisites
 Ensure you have the following installed:
-- **Kubernetes Cluster** (Minikube, Kind, ou um provedor de nuvem como AWS EKS, GKE, AKS, ou **Digital Ocean Kubernetes**)
+- **Kubernetes Cluster** (Minikube, Kind, or a cloud provider like AWS EKS, GKE, AKS, or **Digital Ocean Kubernetes**)
 - **Helm** (Package manager for Kubernetes)
 - **Kubectl** (Kubernetes CLI)
 
@@ -230,7 +230,7 @@ With this setup, you have:
 ✅ **Cert-Manager for automatic SSL certificates**
 ✅ **Secure HTTPS with Let's Encrypt**
 ✅ **Multiple services exposed via Ingress**
-✅ **Cluster provisionado na Digital Ocean para alta disponibilidade**
+✅ **Cluster provisioned on Digital Ocean for high availability**
 
 If you have any issues, feel free to open an issue in this repository! Happy coding! 🚀
 
