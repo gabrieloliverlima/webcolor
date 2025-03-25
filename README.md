@@ -1,4 +1,4 @@
-# Kubernetes Deployment with Ingress and TLS
+# Kubernetes Deployment with Ingress and SSL/TLS
 
 This repository provides a complete Kubernetes setup with **NGINX Ingress Controller**, **Cert-Manager**, and **Let's Encrypt** for securing services with HTTPS.
 
